@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issue Books - Library Management System</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .header {
+            background-color: #fff;
+            padding: 10px 20px;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+            .header h2 {
+                margin: 0;
+                font-size: 24px;
+                color: #2c3e50;
+            }
+
+            .header small {
+                color: #7f8c8d;
+                font-size: 14px;
+            }
+
+        .card {
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            margin: 0 auto;
+        }
+
+            .card h3 {
+                font-size: 20px;
+                color: #2c3e50;
+                margin-top: 0;
+                border-bottom: 1px solid #ddd;
+                padding-bottom: 10px;
+            }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+            .form-group label {
+                display: block;
+                font-weight: 600;
+                color: #34495e;
+                margin-bottom: 5px;
+            }
+
+            .form-group input, .form-group select {
+                width: 100%;
+                padding: 8px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+                font-size: 14px;
+            }
+
+        .issue-button {
+            display: block;
+            width: 150px;
+            margin: 20px auto 0;
+            padding: 10px;
+            background-color: #2ecc71;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+            .issue-button:hover {
+                background-color: #27ae60;
+            }
+
+        .footer {
+            text-align: right;
+            font-size: 12px;
+            color: #7f8c8d;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h2>Dashboard <small>Control panel</small></h2>
+        <div>
+            <a href="#">Home</a> | <a href="#">Issue Books</a>
+        </div>
+    </div>
+    <div class="card">
+        <h3>Issue Books</h3>
+        <form action="/issue-books" method="POST">
+            <div class="form-group">
+                <label for="bookNo">Book No *</label>
+                <input type="text" id="bookNo" name="bookNo" placeholder="Type Book No Eg:4521603" required>
+            </div>
+            <div class="form-group">
+                <label for="bookTitle">Book Title</label>
+                <input type="text" id="bookTitle" name="bookTitle" placeholder="Book Title">
+            </div>
+            <div class="form-group">
+                <label for="userId">User ID</label>
+                <input type="text" id="userId" name="userId" placeholder="Type User ID Eg: 1001">
+            </div>
+            <div class="form-group">
+                <label for="userName">Name</label>
+                <input type="text" id="userName" name="userName" placeholder="Person's Name">
+            </div>
+            <div class="form-group">
+                <label for="dateIssued">Date Issued</label>
+                <input type="date" id="dateIssued" name="dateIssued" value="2026-02-04">
+            </div>
+            <div class="form-group">
+                <label for="returnDate">By when to Return</label>
+                <input type="date" id="returnDate" name="returnDate">
+            </div>
+            <button type="submit" style="display: none;">Submit</button> <!-- Hidden submit button for form structure -->
+        </form>
+        <button type="button" class="issue-button">Issue Book</button>
+    </div>
+    <div class="footer">Last updated: September 04, 2025, 11:30 AM IST</div>
+</body>
+</html>

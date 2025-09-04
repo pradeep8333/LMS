@@ -1,0 +1,298 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Issued Books - Library Management System</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .header {
+            background-color: #fff;
+            padding: 10px 20px;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+            .header h2 {
+                margin: 0;
+                font-size: 24px;
+                color: #2c3e50;
+            }
+
+            .header small {
+                color: #7f8c8d;
+                font-size: 14px;
+            }
+
+        .search-bar {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+            .search-bar input {
+                padding: 8px;
+                font-size: 14px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #3498db;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        td {
+            color: #34495e;
+        }
+
+        .action-btn {
+            display: flex;
+            gap: 5px;
+        }
+
+            .action-btn button {
+                padding: 5px 10px;
+                border: none;
+                border-radius: 3px;
+                cursor: pointer;
+                color: #fff;
+            }
+
+            .action-btn .return-btn {
+                background-color: #2ecc71;
+            }
+
+                .action-btn .return-btn:hover {
+                    background-color: #27ae60;
+                }
+
+            .action-btn .email-btn {
+                background-color: #e67e22;
+            }
+
+                .action-btn .email-btn:hover {
+                    background-color: #d35400;
+                }
+
+            .action-btn .disabled {
+                background-color: #bdc3c7;
+                cursor: not-allowed;
+            }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            width: 400px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+            .modal-content h3 {
+                font-size: 20px;
+                color: #2c3e50;
+                margin-top: 0;
+            }
+
+            .modal-content .form-group {
+                margin-bottom: 15px;
+            }
+
+            .modal-content label {
+                display: block;
+                font-weight: 600;
+                color: #34495e;
+                margin-bottom: 5px;
+            }
+
+            .modal-content input, .modal-content textarea {
+                width: 100%;
+                padding: 8px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+                font-size: 14px;
+            }
+
+            .modal-content button {
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                color: #fff;
+                margin-right: 10px;
+            }
+
+            .modal-content .return-btn {
+                background-color: #2ecc71;
+            }
+
+                .modal-content .return-btn:hover {
+                    background-color: #27ae60;
+                }
+
+            .modal-content .cancel-btn {
+                background-color: #e74c3c;
+            }
+
+                .modal-content .cancel-btn:hover {
+                    background-color: #c0392b;
+                }
+
+        .footer {
+            text-align: right;
+            font-size: 12px;
+            color: #7f8c8d;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h2>Dashboard <small>Control panel</small></h2>
+        <div>
+            <a href="#">Home</a> | <a href="#">Manage Issued Books</a>
+        </div>
+    </div>
+    <div class="search-bar">
+        <input type="text" placeholder="Type User ID">
+        <input type="text" placeholder="Type Person Name">
+        <input type="text" placeholder="Type Book ID">
+    </div>
+    <table>
+        <tr>
+            <th>Book ID</th>
+            <th>Book Name</th>
+            <th>User ID</th>
+            <th>Person Name</th>
+            <th>Issued Date</th>
+            <th>Date Due</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="action-btn">
+                <button class="return-btn" onclick="document.getElementById('returnModal').style.display='flex'">Return Books</button>
+                <button class="email-btn" id="emailBtn" onclick="checkDueDate()">Send Email</button>
+            </td>
+        </tr>
+    </table>
+    <div id="returnModal" class="modal">
+        <div class="modal-content">
+            <h3>Return Books</h3>
+            <form action="/return-books" method="POST">
+                <input type="hidden" id="bookId" name="bookId" value="">
+                <div class="form-group">
+                    <label for="returnDate">Return Date</label>
+                    <input type="date" id="returnDate" name="returnDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="returnNote">Note (if any)</label>
+                    <textarea id="returnNote" name="returnNote" placeholder="Enter note"></textarea>
+                </div>
+                <button type="submit" class="return-btn">Return</button>
+                <button type="button" class="cancel-btn" onclick="document.getElementById('returnModal').style.display='none'">Cancel</button>
+            </form>
+        </div>
+    </div>
+    <div id="emailModal" class="modal">
+        <div class="modal-content">
+            <h3>Send Email Reminder</h3>
+            <form id="emailForm" onsubmit="sendEmail(event)">
+                <input type="hidden" id="emailBookId" name="emailBookId" value="">
+                <div class="form-group">
+                    <label for="emailAddress">Email Address</label>
+                    <input type="email" id="emailAddress" name="emailAddress" placeholder="Enter email address" required>
+                </div>
+                <div class="form-group">
+                    <label for="returnDateEmail">Return Date</label>
+                    <input type="date" id="returnDateEmail" name="returnDateEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="emailContent">Email Content</label>
+                    <textarea id="emailContent" name="emailContent" readonly>Book Issued {Book Name} to you needs to be returned to the library by {returnDate}.</textarea>
+                </div>
+                <button type="submit" class="return-btn">Send Mail</button>
+                <button type="button" class="cancel-btn" onclick="document.getElementById('emailModal').style.display='none'">Cancel</button>
+            </form>
+        </div>
+    </div>
+    <div class="footer">Last updated: September 04, 2025, 12:18 PM IST</div>
+    <script>
+        function checkDueDate() {
+            const dueDateInput = document.querySelector('td input[placeholder="Date Due"]');
+            if (!dueDateInput || !dueDateInput.value) {
+                alert("Please set a due date to check.");
+                return;
+            }
+            const dueDate = new Date(dueDateInput.value);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0); // Reset time for accurate comparison
+
+            if (dueDate && dueDate <= new Date(today.getTime() + 3 * 24 * 60 * 60 * 1000)) {
+                document.getElementById('emailModal').style.display = 'flex';
+            } else {
+                alert("Email can only be sent if the return date is within 3 days from today.");
+            }
+        }
+
+        function sendEmail(event) {
+            event.preventDefault(); // Prevent default form submission
+            const emailAddress = document.getElementById('emailAddress').value;
+            const returnDate = document.getElementById('returnDateEmail').value;
+            const emailContent = document.getElementById('emailContent');
+
+            if (emailAddress && returnDate) {
+                emailContent.value = `Book Issued {Book Name} to you needs to be returned to the library by ${new Date(returnDate).toLocaleDateString()}.`;
+                alert(`Email sent to ${emailAddress}: ${emailContent.value}`);
+                document.getElementById('emailModal').style.display = 'none';
+                document.getElementById('emailForm').reset(); // Reset form
+            } else {
+                alert("Please fill in all fields.");
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Librarian Dashboard - Library Management System</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .header {
+            background-color: #fff;
+            padding: 10px 20px;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+            .header h2 {
+                margin: 0;
+                font-size: 24px;
+                color: #2c3e50;
+            }
+
+            .header small {
+                color: #7f8c8d;
+                font-size: 14px;
+            }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+            .card h3 {
+                font-size: 18px;
+                color: #2c3e50;
+                margin: 0 0 10px;
+            }
+
+            .card p {
+                font-size: 24px;
+                color: #34495e;
+                margin: 0;
+                font-weight: 600;
+            }
+
+        .footer {
+            text-align: right;
+            font-size: 12px;
+            color: #7f8c8d;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h2>Dashboard <small>Control panel</small></h2>
+        <div>
+            <a href="#">Home</a> | <a href="#">Librarian Dashboard</a>
+        </div>
+    </div>
+    <div class="dashboard-grid">
+        <div class="card">
+            <h3>Total Books</h3>
+            <p>150</p>
+        </div>
+        <div class="card">
+            <h3>Issued Books</h3>
+            <p>25</p>
+        </div>
+        <div class="card">
+            <h3>Pending Fines</h3>
+            <p>$75.00</p>
+        </div>
+        <div class="card">
+            <h3>Active Users</h3>
+            <p>50</p>
+        </div>
+    </div>
+    <div class="footer">Last updated: September 04, 2025, 04:58 PM IST</div>
+</body>
+</html>

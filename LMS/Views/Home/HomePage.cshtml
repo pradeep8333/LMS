@@ -1,0 +1,106 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "LibrarianDashboard";
+}
+
+<style>
+    .dashboard-content {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f9f9f9;
+        padding: 50px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        text-align: center;
+        width: 90%;
+        max-width: 700px;
+        margin: 30px auto;
+        transition: box-shadow 0.3s ease-in-out;
+    }
+
+        .dashboard-content:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+    .dashboard-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 70vh;
+    }
+
+    .greeting-text {
+        color: #333;
+        font-size: 2em;
+        font-weight: 700;
+        margin-bottom: 15px;
+        letter-spacing: -0.5px;
+    }
+
+    .highlight {
+        color: #007bff;
+    }
+
+    .system-name {
+        color: #555;
+        font-size: 1.1em;
+        font-weight: 400;
+        margin-top: 8px;
+        margin-bottom: 25px;
+    }
+
+    /* Buttons */
+    .btn-dashboard {
+        display: block;
+        width: 80%;
+        max-width: 300px;
+        margin: 10px auto;
+        padding: 12px;
+        font-size: 16px;
+        font-weight: bold;
+        color: white;
+        border-radius: 6px;
+        text-decoration: none;
+        transition: background 0.3s;
+    }
+
+    .btn-issue {
+        background: #3498db;
+    }
+
+        .btn-issue:hover {
+            background: #2980b9;
+        }
+
+    .btn-return {
+        background: #27ae60;
+    }
+
+        .btn-return:hover {
+            background: #1e8449;
+        }
+
+    .btn-upload {
+        background: #f39c12;
+    }
+
+        .btn-upload:hover {
+            background: #d68910;
+        }
+
+    .btn-logout {
+        background: #e74c3c;
+    }
+
+        .btn-logout:hover {
+            background: #c0392b;
+        }
+</style>
+
+<div class="dashboard-wrapper">
+    <div class="dashboard-content">
+        <h1 class="greeting-text">
+            Hello, <span class="highlight">Welcome</span> to the
+            <span class="highlight">Librarian Dashboard</span>
+        </h1>
+    </div>
+</div>
