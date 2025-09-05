@@ -1,0 +1,76 @@
+﻿@{
+    Layout = "~/Views/Shared/Student_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fines & Payments</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+    <!-- Top Navbar -->
+
+    <!-- Main Content -->
+    <div class="container mx-auto p-8">
+        <header class="flex justify-between items-center mb-8">
+            <h1 class="text-3xl font-bold">Fines & Payments</h1>
+            <div class="text-gray-600">Updated: 09/05/2025, 10:18 AM</div>
+        </header>
+        <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+            <h2 class="text-2xl font-semibold mb-4 flex items-center">
+                <svg class="w-6 h-6 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                Fines and Payment History
+            </h2>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left">
+                    <thead>
+                        <tr class="bg-gray-200">
+                            <th class="p-3">Book Title</th>
+                            <th class="p-3">Fine Amount</th>
+                            <th class="p-3">Due Date</th>
+                            <th class="p-3">Status</th>
+                            <th class="p-3">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="5" class="p-3 text-center text-gray-600">No fines or payments recorded.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold mb-4 flex items-center">
+                <svg class="w-6 h-6 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                </svg>
+                Pay Fines via UPI
+            </h2>
+            <div class="flex flex-col md:flex-row gap-6">
+                <div class="flex-1">
+                    <p class="text-gray-600 mb-4">Scan the QR code below with any UPI app (e.g., Google Pay, PhonePe, Paytm) to pay your fines.</p>
+                    <div class="flex justify-center">
+                        <img src="https://via.placeholder.com/200x200?text=UPI+QR+Code" alt="UPI QR Code" class="w-48 h-48">
+                    </div>
+                    <p class="text-center text-gray-500 mt-2">Placeholder: Dynamic QR code will be generated here.</p>
+                </div>
+                <div class="flex-1">
+                    <p class="text-gray-600 mb-4">Alternatively, click the button below to open your UPI app with pre-filled payment details.</p>
+                    <a href="upi://pay?pa=library@upi&pn=Library%20Portal&am=0.00&cu=INR" class="bg-blue-500 text-white px-4 py-3 rounded-lg hover:bg-blue-600 flex items-center justify-center">
+                        <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        Pay with UPI App
+                    </a>
+                    <p class="text-gray-500 mt-2">Note: Use a payment gateway like Razorpay or PayU to generate dynamic QR codes and handle transactions.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

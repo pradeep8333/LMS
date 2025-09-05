@@ -1,0 +1,190 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Books - University LMS</title>
+    <!-- Bootstrap + FontAwesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #F8F9FA;
+            color: #2C3E50;
+            margin: 0;
+            padding: 0;
+        }
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 230px;
+            height: 100%;
+            background: #2C3E50;
+            padding-top: 40px;
+            box-shadow: 2px 0 6px rgba(0, 0, 0, 0.15);
+        }
+
+            .sidebar a {
+                color: #BDC3C7;
+                display: block;
+                padding: 14px 20px;
+                font-size: 15px;
+                font-weight: 500;
+                text-decoration: none;
+                transition: all 0.2s ease-in-out;
+                border-left: 4px solid transparent;
+            }
+
+                .sidebar a i {
+                    margin-right: 12px;
+                    font-size: 16px;
+                }
+
+                .sidebar a:hover,
+                .sidebar a.active {
+                    background: #00C9A7;
+                    color: #fff;
+                    border-left: 4px solid #fff;
+                }
+        /* Content */
+        .content-wrapper {
+            margin-left: 230px;
+            padding: 30px;
+            min-height: 100vh;
+            background: #F4F6F7;
+        }
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 15px;
+            margin-top: 30px;
+            color: #777;
+            font-size: 14px;
+            border-top: 1px solid #ddd;
+        }
+        /* Form Styling */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+            .form-group label {
+                font-weight: 500;
+                color: #2C3E50;
+            }
+
+            .form-group input,
+            .form-group select {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                font-size: 14px;
+            }
+
+        .btn-primary {
+            background: #00C9A7;
+            border: none;
+            padding: 10px 20px;
+            font-weight: 500;
+        }
+
+            .btn-primary:hover {
+                background: #00A589;
+            }
+
+        .btn-default {
+            background: #BDC3C7;
+            border: none;
+            padding: 10px 20px;
+            font-weight: 500;
+            color: #2C3E50;
+        }
+
+            .btn-default:hover {
+                background: #A9B1B8;
+            }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="text-center py-4 text-lg font-bold text-white border-b border-gray-600">
+            <i class="fa fa-university mr-2"></i> Welcome, [Student Name]
+        </div>
+        <a href="/Students/Dashboard" class="active"><i class="fa fa-home"></i> Dashboard</a>
+        <a href="/Students/ProfileDetails"><i class="fa fa-id-card"></i> Profile Details</a>
+        <a href="/Students/StudentChangePassword"><i class="fa fa-key"></i> Change Password</a>
+        <a href="/Students/MyBooks"><i class="fa fa-book"></i> My Books</a>
+        <a href="/Students/SearchBooks"><i class="fa fa-search"></i> Search Books</a>
+        <a href="/Students/FinesandPayments"><i class="fa fa-money-bill"></i> Fines & Payments</a>
+        <a href="/Students/AddBooks" class="active"><i class="fa fa-plus-circle"></i> Add Books</a>
+        <a href="/Login/Logout"><i class="fa fa-sign-out"></i> Logout</a>
+    </div>
+    <!-- Main Content -->
+    <div class="content-wrapper">
+        <div class="container-fluid">
+            <h2 class="text-2xl font-bold mb-4" style="color: #2C3E50;">
+                <i class="fa fa-book mr-2"></i> Add New Book
+            </h2>
+            <form action="/Students/AddBooks" method="POST">
+                <div class="form-group">
+                    <label for="bookTitle">Book Title</label>
+                    <input type="text" id="bookTitle" name="bookTitle" class="form-control" placeholder="Enter book title" required>
+                </div>
+                <div class="form-group">
+                    <label for="author">Author</label>
+                    <input type="text" id="author" name="author" class="form-control" placeholder="Enter author name" required>
+                </div>
+                <div class="form-group">
+                    <label for="isbn">ISBN</label>
+                    <input type="text" id="isbn" name="isbn" class="form-control" placeholder="Enter ISBN (e.g., 978-3-16-148410-0)" pattern="\d{3}-\d{1,5}-\d{1,7}-\d{1,7}-\d{1}" required>
+                </div>
+                <div class="form-group">
+                    <label for="publisher">Publisher</label>
+                    <input type="text" id="publisher" name="publisher" class="form-control" placeholder="Enter publisher name" required>
+                </div>
+                <div class="form-group">
+                    <label for="publicationYear">Publication Year</label>
+                    <input type="number" id="publicationYear" name="publicationYear" class="form-control" placeholder="Enter publication year" min="1800" max="2025" required>
+                </div>
+                <div class="form-group">
+                    <label for="genre">Genre</label>
+                    <select id="genre" name="genre" class="form-control" required>
+                        <option value="" disabled selected>Select genre</option>
+                        <option value="Fiction">Fiction</option>
+                        <option value="Non-Fiction">Non-Fiction</option>
+                        <option value="Science Fiction">Science Fiction</option>
+                        <option value="Biography">Biography</option>
+                        <option value="Textbook">Textbook</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Quantity</label>
+                    <input type="number" id="quantity" name="quantity" class="form-control" placeholder="Enter quantity" min="1" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa fa-plus-circle mr-1"></i> Add Book
+                    </button>
+                    <button type="button" class="btn btn-default" onclick="window.location.href='/Students/Dashboard'">
+                        <i class="fa fa-times-circle mr-1"></i> Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
+        <hr />
+        <footer>
+            <p>&copy; 2025 University LMS. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

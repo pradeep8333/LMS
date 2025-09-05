@@ -158,8 +158,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\LMSController.cs" />
     <Compile Include="Controllers\Logincontroller.cs" />
+    <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -201,6 +201,9 @@
       <DependentUpon>LMS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Loginviewmodel.cs" />
+    <Compile Include="Models\Student.cs">
+      <DependentUpon>LMS.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -253,14 +256,9 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Shared\Library.cshtml" />
-    <Content Include="Views\Home\HomePage.cshtml" />
-    <Content Include="Views\Home\UploadPage.cshtml" />
-    <Content Include="Views\EmployeeDashboard\HomePage.cshtml" />
+    <Content Include="Views\Students\Dashboard.cshtml" />
     <Content Include="Views\Home\ChangePassword.cshtml" />
     <Content Include="Views\Home\ProfileDetails.cshtml" />
     <Content Include="Views\Home\AddFines.cshtml" />
@@ -269,9 +267,19 @@
     <Content Include="Views\Home\ViewBooks.cshtml" />
     <Content Include="Views\Home\ViewaIssuedBooks.cshtml" />
     <Content Include="Views\Home\IssuedBooks.cshtml" />
+    <Content Include="Views\Students\ProfileDetails.cshtml" />
+    <Content Include="Views\Students\MyBooks.cshtml" />
+    <Content Include="Views\Students\SearchBooks.cshtml" />
+    <Content Include="Views\Students\FinesandPayments.cshtml" />
+    <Content Include="Views\Shared\Student_Layout.cshtml" />
+    <Content Include="Views\Students\StudentChangePassword.cshtml" />
+    <Content Include="Views\Home\ExcelUpload.cshtml" />
+    <Content Include="Views\Home\AddBooks.cshtml" />
+    <Content Include="Views\Home\HomePage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\LMS\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

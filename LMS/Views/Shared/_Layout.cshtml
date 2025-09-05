@@ -133,11 +133,11 @@
         <div class="container-fluid">
             <div class="navbar-header">
                 <span class="hamburger" onclick="toggleSidebar()">&#9776;</span>
-                <span class="panel-title">University LMS Panel</span>
+                <span class="panel-title">ICFAI,Raipur</span>
             </div>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#"><i class="fa fa-user"></i> Librarian</a></li>
-                <li>@Html.ActionLink("Logout", "Logout", "Login", null, new { @class = "fa fa-sign-out" })</li>
+                <li>@Html.ActionLink("Logout", "Login", null, new { @class = "fa fa-sign-out" })</li>
             </ul>
         </div>
     </div>
@@ -145,7 +145,7 @@
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
-            <i class="fa fa-university"></i> University LMS
+            <i class="fa fa-university"></i> Libraian
         </div>
 
         <!-- Dashboard -->
@@ -167,7 +167,7 @@
             <i class="fa fa-caret-down pull-right"></i>
         </a>
         <div class="collapse" id="booksSubmenu">
-            <a href="@Url.Action("UploadPage","Home")"><i class="fa fa-plus"></i> <span>Add Books</span></a>
+            <a href="@Url.Action("AddBook","Home")"><i class="fa fa-plus"></i> <span>Add Books</span></a>
             <a href="@Url.Action("ViewBooks","Home")"><i class="fa fa-list"></i> <span>View Books</span></a>
         </div>
 

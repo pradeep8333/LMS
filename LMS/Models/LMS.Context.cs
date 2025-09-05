@@ -32,5 +32,6 @@ namespace LMS.Models
         public virtual DbSet<HOD> HODs { get; set; }
         public virtual DbSet<Login> Logins { get; set; }
         public virtual DbSet<BooksMaster> BooksMasters { get; set; }
+        public virtual DbSet<Student> Students { get; set; }
     }
 }

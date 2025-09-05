@@ -1,0 +1,86 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model LMS.Models.BookUploadViewModel
+
+<div class="card shadow">
+    <div class="card-header bg-primary text-white py-2">
+        <h5 class="mb-0">Add Single Book</h5>
+    </div>
+    <div class="card-body py-3">
+        @using (Html.BeginForm("UploadSingleBook", "LMS", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    @Html.LabelFor(m => m.SlNo)
+                    @Html.TextBoxFor(m => m.SlNo, new { @class = "form-control", placeholder = "Sl. No", required = "required", type = "number" })
+                </div>
+                <div class="col-md-4 mb-3">
+                    @Html.LabelFor(m => m.AccNo)
+                    @Html.TextBoxFor(m => m.AccNo, new { @class = "form-control", placeholder = "Accession Number", required = "required" })
+                </div>
+                <div class="col-md-4 mb-3">
+                    @Html.LabelFor(m => m.CallNo)
+                    @Html.TextBoxFor(m => m.CallNo, new { @class = "form-control", placeholder = "Call Number" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    @Html.LabelFor(m => m.Title)
+                    @Html.TextBoxFor(m => m.Title, new { @class = "form-control", placeholder = "Title of the Book", required = "required" })
+                </div>
+                <div class="col-md-6 mb-3">
+                    @Html.LabelFor(m => m.Author)
+                    @Html.TextBoxFor(m => m.Author, new { @class = "form-control", placeholder = "Author" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    @Html.LabelFor(m => m.PlaceOfPublisher)
+                    @Html.TextBoxFor(m => m.PlaceOfPublisher, new { @class = "form-control", placeholder = "Place of Publisher" })
+                </div>
+                <div class="col-md-4 mb-3">
+                    @Html.LabelFor(m => m.Year)
+                    @Html.TextBoxFor(m => m.Year, new { @class = "form-control", placeholder = "Year", type = "number" })
+                </div>
+                <div class="col-md-4 mb-3">
+                    @Html.LabelFor(m => m.Edition)
+                    @Html.TextBoxFor(m => m.Edition, new { @class = "form-control", placeholder = "Edition" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    @Html.LabelFor(m => m.Pages)
+                    @Html.TextBoxFor(m => m.Pages, new { @class = "form-control", placeholder = "Pages" })
+                </div>
+                <div class="col-md-4 mb-3">
+                    @Html.LabelFor(m => m.Volume)
+                    @Html.TextBoxFor(m => m.Volume, new { @class = "form-control", placeholder = "Volume" })
+                </div>
+                <div class="col-md-4 mb-3">
+                    @Html.LabelFor(m => m.Source)
+                    @Html.TextBoxFor(m => m.Source, new { @class = "form-control", placeholder = "Source" })
+                </div>
+            </div>
+
+            <div class="mb-3">
+                @Html.LabelFor(m => m.Price)
+                @Html.TextBoxFor(m => m.Price, new { @class = "form-control", placeholder = "Price", type = "number", step = "0.01" })
+            </div>
+
+            <button type="submit" class="btn btn-success">
+                <i class="fa fa-plus-circle"></i> Add Book
+            </button>
+        }
+    </div>
+</div>
+
+@{
+    ViewBag.Title = "ExcelUpload";
+}
+
+<h2>ExcelUpload</h2>
+

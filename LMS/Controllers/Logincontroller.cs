@@ -35,7 +35,7 @@ namespace LMS.Controllers
 
             if (ModelState.IsValid)
             {
-                // Check user credentials (any role)
+                // Check user credentials
                 var user = _db.Logins.FirstOrDefault(u => u.UserID == model.UserID
                                                        && u.PasswordHash == model.Password);
                 if (user != null)
@@ -44,14 +44,27 @@ namespace LMS.Controllers
                     Session["UserID"] = user.UserID;
                     Session["UserRole"] = user.Role;
 
-                    // Redirect to LMS home/dashboard
-                    return RedirectToAction("HomePage", "Home");
+                    // Role-based redirection
+                    if (user.Role.Equals("Librarian", StringComparison.OrdinalIgnoreCase))
+                    {
+                        return RedirectToAction("Dashboard", "Home");  // Librarian dashboard
+                    }
+                    else if (user.Role.Equals("Student", StringComparison.OrdinalIgnoreCase))
+                    {
+                        return RedirectToAction("Dashboard", "Students");  // Student dashboard
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home"); // Default page
+                    }
                 }
+
                 TempData["ErrorMessage"] = "Invalid UserID or Password.";
             }
 
             return View(model);
         }
+
 
         // CAPTCHA Image
         public ActionResult CaptchaImage()
@@ -77,6 +90,12 @@ namespace LMS.Controllers
             }
         }
 
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            Session.Abandon();
+            return RedirectToAction("Login", "Login");
+        }
         // GET: Forget Password
         public ActionResult ForgetPassword()
         {

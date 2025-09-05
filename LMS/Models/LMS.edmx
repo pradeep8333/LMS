@@ -109,6 +109,17 @@ warning 6002: The table/view 'LMS.dbo.BooksMaster' does not have a primary key d
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="EmailID" Type="nvarchar" MaxLength="255" />
         </EntityType>
+        <EntityType Name="Students">
+          <Key>
+            <PropertyRef Name="SlNo" />
+          </Key>
+          <Property Name="SlNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="EmpID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
         <Association Name="FK_Employee_Department">
           <End Role="Department" Type="Self.Department" Multiplicity="1" />
           <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
@@ -152,6 +163,7 @@ warning 6002: The table/view 'LMS.dbo.BooksMaster' does not have a primary key d
           <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HOD" EntityType="Self.HOD" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Logins" EntityType="Self.Logins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BooksMaster" EntityType="Self.BooksMaster" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [BooksMaster].[SampleAccNo] AS [SampleAccNo], 
@@ -205,6 +217,7 @@ warning 6002: The table/view 'LMS.dbo.BooksMaster' does not have a primary key d
             <End Role="HOD" EntitySet="HODs" />
             <End Role="Employee" EntitySet="Employees" />
           </AssociationSet>
+          <EntitySet Name="Students" EntityType="LMSModel.Student" />
         </EntityContainer>
         <EntityType Name="Book">
           <Key>
@@ -350,6 +363,17 @@ warning 6002: The table/view 'LMS.dbo.BooksMaster' does not have a primary key d
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="SlNo" />
+          </Key>
+          <Property Name="SlNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="EmpID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PasswordHash" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -462,6 +486,18 @@ warning 6002: The table/view 'LMS.dbo.BooksMaster' does not have a primary key d
                 <ScalarProperty Name="TitleOfTheBook" ColumnName="TitleOfTheBook" />
                 <ScalarProperty Name="CallNo" ColumnName="CallNo" />
                 <ScalarProperty Name="SampleAccNo" ColumnName="SampleAccNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="LMSModel.Student">
+              <MappingFragment StoreEntitySet="Students">
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SlNo" ColumnName="SlNo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

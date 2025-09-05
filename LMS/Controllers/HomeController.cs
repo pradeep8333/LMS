@@ -80,7 +80,7 @@ namespace LMS.Controllers
         }
 
         // ✅ Add Book
-        public ActionResult UploadPage()
+        public ActionResult AddBook()
         {
             if (Session["UserID"] == null)
                 return RedirectToAction("Login", "Login");
